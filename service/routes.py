@@ -49,10 +49,8 @@ def create_accounts():
     account = Account()
     account.deserialize(request.get_json())
     account.create()
-    message = account.serialize()
-    
+    message = account.serialize() 
     location_url = url_for("get_accounts", account_id=account.id, _external=True)
-    
     return make_response(
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
